@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио видеомонтажёра Цыренжаповой Номины (Avatar_Nom)">
+    <title>Цыренжапова Номина — видеомонтажёр</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <a href="#main" class="skip-link">Перейти к основному содержанию</a>
+
+    <header>
+        <div class="header-buttons">
+            <button id="read-page"
+                    title="Озвучить страницу"
+                    aria-label="Озвучить текст страницы"
+                    aria-pressed="false">🔊</button>
+
+            <button id="theme-toggle"
+                    title="Сменить тему"
+                    aria-label="Переключить тёмную тему"
+                    aria-pressed="false">🌙</button>
+        </div>
+
+        <nav aria-label="Основная навигация">
+            <a href="#about">Обо мне</a>
+            <a href="#skills">Навыки</a>
+            <a href="#projects">Работы</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+        <h1>Цыренжапова Номина <span class="nick">(Avatar_Nom)</span></h1>
+        <p>Видеомонтажёр · фан-ролики по «Аватару»</p>
+    </header>
+
+    <main id="main">
+
+        <section id="about" aria-labelledby="about-title">
+            <img src="photo.jpg"
+                 alt="Фото Цыренжаповой Номины"
+                 width="180" height="180">
+            <div>
+                <h2 id="about-title">Обо мне</h2>
+                <p>
+                    Я, Цыренжапова Номина Аюровна, студент 3-го курса колледжа БГУ,
+                    обучаюсь на специальности «Информационные системы и программирование».
+                    Занимаюсь видеомонтажом: собираю ролики, работаю со звуком,
+                    цветокоррекцией и титрами.
+                </p>
+                <p>
+                    Люблю делать короткие ролики на разные темы, которые удерживают
+                    внимание зрителя с первой секунды, в основном про вселенную Аватара.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" aria-labelledby="skills-title">
+            <h2 id="skills-title">Навыки</h2>
+            <ul class="skills-list">
+                <li><span>Видеомонтаж</span> — склейка, ритм, переходы</li>
+                <li><span>Звук</span> — чистка, сведение, подбор музыки</li>
+                <li><span>Титры и графика</span> — надписи, подписи, простые анимации</li>
+                <li><span>Инструменты</span> — CapCut, Alight Motion, TimeCut</li>
+            </ul>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-title">
+            <h2 id="projects-title">Мои работы</h2>
+            <p class="section-note">Все ролики взяты из моего TikTok-аккаунта.</p>
+
+            <article aria-labelledby="work1-title">
+                <video controls preload="metadata"
+                       poster="video/preview1.jpg"
+                       aria-label="Видео: Фанерное солнце — история о повзрослевших героях детства">
+                    <source src="video/work1.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3 id="work1-title">🎬 Фанерное солнце</h3>
+                <p>История о повзрослевших героях детства.</p>
+            </article>
+
+            <article aria-labelledby="work2-title">
+                <video controls preload="metadata"
+                       poster="video/preview2.jpg"
+                       aria-label="Видео: Маги воздуха — трагедия, показанная в фильме про Аанга">
+                    <source src="video/work2.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3 id="work2-title">🎬 Маги воздуха</h3>
+                <p>Трагедия, показанная в фильме про Аанга.</p>
+            </article>
+
+            <article aria-labelledby="work3-title">
+                <video controls preload="metadata"
+                       poster="video/preview3.jpg"
+                       aria-label="Видео: АгниКай — противостояние между братом и сестрой">
+                    <source src="video/work3.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3 id="work3-title">🎬 АгниКай</h3>
+                <p>Противостояние между братом и сестрой.</p>
+            </article>
+
+            <article aria-labelledby="work4-title">
+                <video controls preload="metadata"
+                       poster="video/preview4.jpg"
+                       aria-label="Видео: Fire Lord Zuko — путь повзрослевшего Зуко">
+                    <source src="video/work4.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h3 id="work4-title">🎬 Fire Lord Zuko</h3>
+                <p>Путь повзрослевшего Зуко из фильма об Аанге.</p>
+            </article>
+
+            <p class="jump-link">
+                <a href="#contacts" class="jump">Перейти к форме →</a>
+            </p>
+        </section>
+
+        <section id="contacts" aria-labelledby="contacts-title">
+            <h2 id="contacts-title">Связаться со мной</h2>
+
+            <p class="jump-link">
+                <a href="#projects" class="jump jump-back">← Вернуться к работам</a>
+            </p>
+
+            <form action="#" method="POST" novalidate>
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Как вас зовут?" required
+                       autocomplete="name">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email"
+                       placeholder="you@mail.ru" required
+                       autocomplete="email">
+
+                <label for="msg">Сообщение</label>
+                <textarea id="msg" name="message" rows="4"
+                          placeholder="Ваше сообщение..." required></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+            <p id="form-status" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="year">2026</span> Цыренжапова Номина.</p>
+    </footer>
+
+    <button id="to-top" title="Наверх" aria-label="Вернуться наверх">↑</button>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
