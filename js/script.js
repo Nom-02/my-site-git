@@ -29,44 +29,40 @@ const form = document.querySelector('form');
 const statusMsg = document.querySelector('#form-status');
 
 if (form && statusMsg) {
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Отменяем перезагрузку страницы
 
-        const nameInput = document.querySelector('#name');
-        const emailInput = document.querySelector('#email');
-        const msgInput = document.querySelector('#msg');
+        const formData = new FormData(form);
 
-        if (!nameInput.value.trim()) {
-            statusMsg.textContent = 'Пожалуйста, укажите имя.';
-            statusMsg.classList.add('visible');
-            nameInput.focus();
-            return;
-        }
-
-        if (!emailInput.value.trim() || !emailInput.checkValidity()) {
-            statusMsg.textContent = 'Пожалуйста, укажите корректный e-mail.';
-            statusMsg.classList.add('visible');
-            emailInput.focus();
-            return;
-        }
-
-        if (!msgInput.value.trim()) {
-            statusMsg.textContent = 'Пожалуйста, введите сообщение.';
-            statusMsg.classList.add('visible');
-            msgInput.focus();
-            return;
-        }
-
-        const name = nameInput.value.trim();
-
+        // Показываем сообщение "Отправка..."
         statusMsg.classList.remove('visible');
+        statusMsg.textContent = 'Отправка...';
+        statusMsg.classList.add('visible');
 
-        requestAnimationFrame(() => {
-            statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
-            statusMsg.classList.add('visible');
-        });
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
-        form.reset();
+            if (response.ok) {
+                // Успех
+                const nameInput = document.querySelector('#name');
+                const name = nameInput.value.trim();
+                
+                statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
+                form.reset();
+            } else {
+                // Ошибка от Formspree
+                statusMsg.textContent = 'Ой, что-то пошло не так. Попробуйте ещё раз.';
+            }
+        } catch (error) {
+            // Ошибка сети (например, пропал интернет)
+            statusMsg.textContent = 'Ошибка сети. Проверьте подключение к интернету.';
+        }
     });
 }
 
