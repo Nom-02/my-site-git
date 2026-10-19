@@ -141,3 +141,55 @@ if (readBtn && 'speechSynthesis' in window) {
         speechSynthesis.onvoiceschanged = () => {};
     }
 }
+
+const fontIncreaseBtn = document.querySelector('#font-increase');
+const fontDecreaseBtn = document.querySelector('#font-decrease');
+const bodyElement = document.querySelector('body');
+
+// Загружаем сохранённый масштаб или ставим 100%
+let currentZoom = parseInt(localStorage.getItem('siteZoom')) || 100;
+
+const applyZoom = (zoomLevel) => {
+    currentZoom = zoomLevel;
+    bodyElement.style.zoom = `${zoomLevel}%`;
+    localStorage.setItem('siteZoom', zoomLevel);
+    
+    // Меняем подсказку (title) у кнопок, чтобы было понятно
+    if (fontDecreaseBtn) fontDecreaseBtn.title = currentZoom === 100 ? "Сбросить масштаб" : "Уменьшить текст";
+};
+
+// Применяем масштаб при загрузке
+applyZoom(currentZoom);
+
+// Увеличение
+if (fontIncreaseBtn) {
+    fontIncreaseBtn.addEventListener('click', () => {
+        if (currentZoom < 150) {
+            applyZoom(currentZoom + 10);
+        }
+    });
+}
+
+// Уменьшение (и сброс до 100%, если уже меньше или равно 100%)
+if (fontDecreaseBtn) {
+    fontDecreaseBtn.addEventListener('click', () => {
+        if (currentZoom > 100) {
+            applyZoom(currentZoom - 10);
+        } else {
+            applyZoom(100); // Сброс, если нажали на 100% или меньше
+        }
+    });
+}
+
+// Бонус: двойной клик по ЛЮБОЙ кнопке возвращает всё к 100%
+const resetZoom = () => applyZoom(100);
+if (fontIncreaseBtn) fontIncreaseBtn.addEventListener('dblclick', resetZoom);
+if (fontDecreaseBtn) fontDecreaseBtn.addEventListener('dblclick', resetZoom);
+
+// Кнопка сброса масштаба (🔄)
+const fontResetBtn = document.querySelector('#font-reset');
+if (fontResetBtn) {
+    fontResetBtn.addEventListener('click', () => {
+        applyZoom(100);
+    });
+}

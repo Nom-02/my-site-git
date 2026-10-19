@@ -465,3 +465,30 @@ html.dark .jump-back:hover {
     #theme-toggle,
     #read-page { width: 40px; height: 40px; font-size: 18px; }
 }
+
+#font-decrease,
+#font-increase {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#font-reset {
+    font-size: 18px;
+}
+
+/* Чтобы на телефоне 5 кнопок нормально помещались в ряд */
+@media (max-width: 600px) {
+    .header-buttons {
+        gap: 4px;
+    }
+    #theme-toggle,
+    #read-page,
+    #font-decrease,
+    #font-increase,
+    #font-reset {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+}
