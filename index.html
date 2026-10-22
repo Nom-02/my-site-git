@@ -6,6 +6,10 @@
     <meta name="description" content="Портфолио видеомонтажёра Цыренжаповой Номины (Avatar_Nom)">
     <title>Цыренжапова Номина — видеомонтажёр</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+        if (localStorage.getItem('contrast') === 'high') document.documentElement.classList.add('high-contrast');
+    </script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,28 +17,39 @@
     <a href="#main" class="skip-link">Перейти к основному содержанию</a>
 
     <header>
-        <div class="header-buttons">
-            <button id="font-reset"
-                    title="Сбросить масштаб (100%)"
-                    aria-label="Вернуть исходный размер сайта">🔄</button>
+        <button id="a11y-toggle" title="Специальные возможности" aria-label="Открыть меню специальных возможностей" aria-expanded="false" aria-controls="a11y-panel">
+            <img src="icons/setting.png" alt="" class="btn-icon">
+        </button>
 
-            <button id="font-decrease"
-                    title="Уменьшить текст"
-                    aria-label="Уменьшить размер текста">А-</button>
-
-            <button id="font-increase"
-                    title="Увеличить текст"
-                    aria-label="Увеличить размер текста">А+</button>
-
-            <button id="read-page"
-                    title="Озвучить страницу"
-                    aria-label="Озвучить текст страницы"
-                    aria-pressed="false">🔊</button>
-
-            <button id="theme-toggle"
-                    title="Сменить тему"
-                    aria-label="Переключить тёмную тему"
-                    aria-pressed="false">🌙</button>
+        <div id="a11y-panel" class="a11y-panel" hidden>
+            <button id="a11y-close" class="close-btn" aria-label="Закрыть меню">✕</button>
+            <h3>Специальные возможности</h3>
+            
+            <button id="theme-toggle" class="panel-btn">
+                <img src="icons/moon.png" alt="" class="btn-icon theme-icon-moon">
+                <img src="icons/sun.png" alt="" class="btn-icon theme-icon-sun">
+                <span>Тёмная тема</span>
+            </button>
+            
+            <button id="read-page" class="panel-btn" aria-pressed="false">
+                <img src="icons/speech.png" alt="" class="btn-icon">
+                <span>Озвучить текст</span>
+            </button>
+            
+            <button id="contrast-toggle" class="panel-btn" aria-pressed="false">
+                <img src="icons/contrast.png" alt="" class="btn-icon">
+                <span>Высокая контрастность</span>
+            </button>
+            
+            <hr>
+            <div class="zoom-controls">
+                <span>Размер сайта:</span>
+                <div>
+                    <button id="font-decrease" class="zoom-btn" title="Уменьшить">А-</button>
+                    <button id="font-reset" class="zoom-btn" title="Сбросить">100%</button>
+                    <button id="font-increase" class="zoom-btn" title="Увеличить">А+</button>
+                </div>
+            </div>
         </div>
 
         <nav aria-label="Основная навигация">
@@ -45,27 +60,16 @@
         </nav>
 
         <h1>Цыренжапова Номина <span class="nick">(Avatar_Nom)</span></h1>
-        <p>Видеомонтажёр · фан-ролики по «ATLA/ALOK»</p>
+        <p>Видеомонтажёр · фан-ролики по «Аватару»</p>
     </header>
 
     <main id="main">
-
         <section id="about" aria-labelledby="about-title">
-            <img src="photo.jpg"
-                 alt="Фото Цыренжаповой Номины"
-                 width="180" height="180">
+            <img src="photo.jpg" alt="Фото Цыренжаповой Номины" width="180" height="180">
             <div>
                 <h2 id="about-title">Обо мне</h2>
-                <p>
-                    Я, Цыренжапова Номина Аюровна, студент 3-го курса колледжа БГУ,
-                    обучаюсь на специальности «Информационные системы и программирование».
-                    Занимаюсь видеомонтажом: собираю ролики, работаю со звуком,
-                    цветокоррекцией и титрами.
-                </p>
-                <p>
-                    Люблю делать короткие ролики на разные темы, которые удерживают
-                    внимание зрителя с первой секунды, в основном про вселенную Аватара.
-                </p>
+                <p>Я, Цыренжапова Номина Аюровна, студент 3-го курса колледжа БГУ, обучаюсь на специальности «Информационные системы и программирование». Занимаюсь видеомонтажом: собираю ролики, работаю со звуком, цветокоррекцией и титрами.</p>
+                <p>Люблю делать короткие ролики на разные темы, которые удерживают внимание зрителя с первой секунды, в основном про вселенную Аватара.</p>
             </div>
         </section>
 
@@ -84,9 +88,7 @@
             <p class="section-note">Все ролики взяты из моего TikTok-аккаунта.</p>
 
             <article aria-labelledby="work1-title">
-                <video controls preload="metadata"
-                       poster="video/preview1.jpg"
-                       aria-label="Видео: Фанерное солнце — история о повзрослевших героях детства">
+                <video controls preload="metadata" poster="video/preview1.jpg" aria-label="Видео: Фанерное солнце">
                     <source src="video/work1.mp4" type="video/mp4">
                     Ваш браузер не поддерживает видео.
                 </video>
@@ -95,9 +97,7 @@
             </article>
 
             <article aria-labelledby="work2-title">
-                <video controls preload="metadata"
-                       poster="video/preview2.jpg"
-                       aria-label="Видео: Маги воздуха — трагедия, показанная в фильме про Аанга">
+                <video controls preload="metadata" poster="video/preview2.jpg" aria-label="Видео: Маги воздуха">
                     <source src="video/work2.mp4" type="video/mp4">
                     Ваш браузер не поддерживает видео.
                 </video>
@@ -106,9 +106,7 @@
             </article>
 
             <article aria-labelledby="work3-title">
-                <video controls preload="metadata"
-                       poster="video/preview3.jpg"
-                       aria-label="Видео: АгниКай — противостояние между братом и сестрой">
+                <video controls preload="metadata" poster="video/preview3.jpg" aria-label="Видео: АгниКай">
                     <source src="video/work3.mp4" type="video/mp4">
                     Ваш браузер не поддерживает видео.
                 </video>
@@ -117,9 +115,7 @@
             </article>
 
             <article aria-labelledby="work4-title">
-                <video controls preload="metadata"
-                       poster="video/preview4.jpg"
-                       aria-label="Видео: Fire Lord Zuko — путь повзрослевшего Зуко">
+                <video controls preload="metadata" poster="video/preview4.jpg" aria-label="Видео: Fire Lord Zuko">
                     <source src="video/work4.mp4" type="video/mp4">
                     Ваш браузер не поддерживает видео.
                 </video>
@@ -127,32 +123,20 @@
                 <p>Путь повзрослевшего Зуко из фильма об Аанге.</p>
             </article>
 
-            <p class="jump-link">
-                <a href="#contacts" class="jump">Перейти к форме →</a>
-            </p>
+            <p class="jump-link"><a href="#contacts" class="jump">Перейти к форме →</a></p>
         </section>
 
         <section id="contacts" aria-labelledby="contacts-title">
             <h2 id="contacts-title">Связаться со мной</h2>
+            <p class="jump-link"><a href="#projects" class="jump jump-back">← Вернуться к работам</a></p>
 
-            <p class="jump-link">
-                <a href="#projects" class="jump jump-back">← Вернуться к работам</a>
-            </p>
             <form action="https://formspree.io/f/xgaoqvpy" method="POST">
                 <label for="name">Имя</label>
-                <input type="text" id="name" name="name"
-                       placeholder="Как вас зовут?" required
-                       autocomplete="name">
-
+                <input type="text" id="name" name="name" placeholder="Как вас зовут?" required autocomplete="name">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="_replyto"
-                       placeholder="you@mail.ru" required
-                       autocomplete="email">
-
+                <input type="email" id="email" name="_replyto" placeholder="you@mail.ru" required autocomplete="email">
                 <label for="msg">Сообщение</label>
-                <textarea id="msg" name="message" rows="4"
-                          placeholder="Ваше сообщение..." required></textarea>
-
+                <textarea id="msg" name="message" rows="4" placeholder="Ваше сообщение..." required></textarea>
                 <button type="submit">Отправить</button>
             </form>
             <p id="form-status" role="status" aria-live="polite"></p>
@@ -164,7 +148,6 @@
     </footer>
 
     <button id="to-top" title="Наверх" aria-label="Вернуться наверх">↑</button>
-
     <script src="js/script.js" defer></script>
 </body>
 </html>
